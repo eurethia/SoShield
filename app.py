@@ -22,14 +22,18 @@ initialize = 0
 @app.route('/')
 def index():
     global initialize
+    print(initialize)
     if initialize == 0:
         session['loggedin'] = False
         initialize += 1
-    if session['loggedin'] == True:
-        redirect_url = url_for('safe')
-    else:
         redirect_url = url_for('activate')
-    return render_template("index.html", redirect_url = redirect_url)
+        return render_template("index.html", redirect_url = redirect_url)
+    else:
+        if session['loggedin'] == True:
+            redirect_url = url_for('safe')
+        else:
+            redirect_url = url_for('activate')
+        return render_template("index.html", redirect_url = redirect_url)
 
 @app.route('/activate/', methods=('GET', 'POST'))
 def activate():
