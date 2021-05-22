@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel = "icon" href = "{{url_for('static', filename='cukie.png')}}" type = "image/x-icon">
+    </head>
+    <body>
+        <div class = "index">
+            <h1>PRODUCED BY:</h1>
+            <img src="{{url_for('static', filename='cukie.png')}}" align="middle" /><br>
+            <div class = "ads"><img src="https://s3-prod.adage.com/s3fs-public/styles/width_1024/public/KFC_waffle_3x2.jpg"></div><br><br>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <div class="progress-bar">
+                <span class="progress-bar-fill" style="width: 0%"></span>
+            </div>
+        </div>
+        
+        <script>
+            $('.progress-bar-fill').delay(1000).queue(function () {
+                $(this).css('width', '100%')
+            });
+            setTimeout(function(){
+                window.location.href = '{{redirect_url}}';
+            }, 6000);
+        </script>
+    </body>
+</html>

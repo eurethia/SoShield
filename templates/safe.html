@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Safe</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel = "icon" href = "{{url_for('static', filename='cukie.png')}}" type = "image/x-icon">
+    </head>
+    <body>
+        <div class = "safe">
+            <h1>YOU ARE SAFE.</h1>
+            <img src="{{url_for('static', filename='sos.png')}}" align="middle" /><br>
+            <center>
+                <form action="" method="post" novalidate>
+                    {{ form.hidden_tag() }}
+                        <!--<p class = 'logout'>{{ form.submit() }}</p>-->
+                        <input class="logout" type="submit" value="Logout">
+                </form>
+            </center>
+            
+            
+        </div>
+        
+        
+    </body>
+</html>

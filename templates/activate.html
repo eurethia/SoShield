@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Activation</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel = "icon" href = "{{url_for('static', filename='cukie.png')}}" type = "image/x-icon">
+    </head>
+    <body>
+        <div class = "activate">
+            <h1>PLEASE ENTER THE ACTIVATION CODE (FOUND IN THE SoShield&#174 PACKET)</h1>
+            <center>
+                <h4>Note that if this is the first time you use the SoShield&#174 kit, the username and password you enter will be your final username and password.</h4>
+                <form action="" method="post" novalidate class = "forms1">
+                    {{ form.hidden_tag() }}
+                    <p>
+                        {{ form.codes.label }}<br>
+                        {{ form.codes(size=32) }}<br>
+                        {% for error in form.codes.errors %}
+                            <span></span>{{ error }}</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.user_name.label }}<br>
+                        {{ form.user_name(size=32) }}<br>
+                        {% for error in form.user_name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.password.label }}<br>
+                        {{ form.password(size=32) }}<br>
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.show_password() }} {{ form.show_password.label }}
+                        <script>
+                            window.addEventListener("load", function(){
+                                var checkbox  = document.getElementById('{{form.show_password.id}}');
+                                var x = document.getElementById('{{form.password.id}}');
+                                checkbox.addEventListener('change', function() {
+                                    if(this.checked) {
+                                        x.type = 'text'; 
+                                    } else {
+                                        x.type = 'password'; 
+                                    }
+                                });
+                            });
+                        </script>
+                    </p>
+                    <p class = 'login'><input class="activate" type="submit" value="Confirm"></p>
+                    <div class="msg">{{ msg }}</div>
+                </form>
+            </center>
+        </div>
+    </body>
+</html>

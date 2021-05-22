@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Danger</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    </head>
+    <body>
+        <div class = "danger">
+            <h1>SOMEONE IS MOVING NEAR YOU!!!</h1><br><h1 class = "cancel">HIDE!!!</h1>
+            <img src="{{url_for('static', filename='sos.png')}}" align="middle" /><br>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <div class="progress-bar">
+                <span class="progress-bar-fill2" style="width: 0%"></span>
+            </div>
+        </div>
+        <script id = "danger">
+            $('.progress-bar-fill2').delay(0).queue(function () {
+                $(this).css('width', '100%')
+            });
+            setTimeout(function(){
+                window.location.href = '{{redirect_url}}';
+            }, 120000);
+        </script>
+    </body>
+</html>
