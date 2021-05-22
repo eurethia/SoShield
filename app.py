@@ -10,10 +10,10 @@ app = Flask(__name__)
 app.config.from_object(Config)
 
 
-app.config['MYSQL_HOST'] = 'freedb.tech'
-app.config['MYSQL_USER'] = 'freedbtech_cukieAdmin'
-app.config['MYSQL_PASSWORD'] = 'iieessss11223344'
-app.config['MYSQL_DB'] = 'freedbtech_SoShield'
+app.config['MYSQL_HOST'] = '' #mysql host
+app.config['MYSQL_USER'] = '' #username
+app.config['MYSQL_PASSWORD'] = '' #password
+app.config['MYSQL_DB'] = '' #database name
 mysql = MySQL(app)
 
 initialize = 0
