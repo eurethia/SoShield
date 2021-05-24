@@ -1,19 +1,21 @@
-from flask import Flask, render_template, redirect, request, url_for, session, flash
+from flask import Flask, render_template, redirect, request, url_for, session, flash, stream_with_context, Response
 from config import Config
 from forms import LoginForm, Logout
 from flask_mysqldb import MySQL
 import time
-
+import serial
+import json
+from threading import Thread
 
 
 app = Flask(__name__)
 app.config.from_object(Config)
 
 
-app.config['MYSQL_HOST'] = '' #mysql host
-app.config['MYSQL_USER'] = '' #username
-app.config['MYSQL_PASSWORD'] = '' #password
-app.config['MYSQL_DB'] = '' #database name
+app.config['MYSQL_HOST'] = 'freedb.tech'
+app.config['MYSQL_USER'] = 'freedbtech_cukieAdmin'
+app.config['MYSQL_PASSWORD'] = 'iieessss11223344'
+app.config['MYSQL_DB'] = 'freedbtech_SoShield'
 mysql = MySQL(app)
 
 initialize = 0
@@ -39,7 +41,6 @@ def index():
 def activate():
     if session['loggedin'] == True:
         return redirect(url_for('safe'))
-
     form = LoginForm()
     if form.validate_on_submit():
         cds = form.codes.data
@@ -47,10 +48,8 @@ def activate():
         pws = form.password.data
         cur = mysql.connection.cursor()
         print(type(cds))
-
         cur.execute('SELECT * FROM myUser WHERE codes = %s AND usernames = %s AND pw = %s', (cds, un, pws)) #check for exited users
         account = cur.fetchone()
-
         if account:
             session['loggedin'] = True
             session['username'] = un
@@ -77,6 +76,7 @@ def activate():
     return render_template('activate.html', form = form, msg = "")
 
 
+"""
 @app.route('/safe/', methods=['GET', 'POST'])
 def safe():
     if session['loggedin'] == False:
@@ -87,6 +87,7 @@ def safe():
     elif request.method == "POST":
         session['loggedin'] =  False
         return redirect(url_for('index'))
+"""
 
 @app.route('/danger/')
 def danger():
@@ -96,6 +97,33 @@ def danger():
         redirect_url = url_for('safe')
     return render_template('danger.html', redirect_url = redirect_url)
 
+
+
+
+@app.route('/safe/', methods=['GET', 'POST'])
+def safe():
+    if session['loggedin'] == False:
+        return redirect(url_for('index'))
+                
+    if request.method == "GET":
+        form = Logout()
+        def execute():
+            print("I am detecting!!")
+            ser = serial.Serial('/dev/cu.usbmodem14101', 9800, timeout=1)
+            while True:
+                a = str(ser.readline())
+                print(a)
+                if "T" in a:
+                    ser.close()
+                    print("detected!")
+                    return render_template('danger.html', redirect_url = url_for('safe'))
+        thread = Thread(target = execute)
+        thread.start()
+        return render_template("safe.html", form = form)
+
+    elif request.method == "POST":
+        session['loggedin'] =  False
+        return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
