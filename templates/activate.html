@@ -10,25 +10,25 @@
             <h1>PLEASE ENTER THE ACTIVATION CODE (FOUND IN THE SoShield&#174 PACKET)</h1>
             <center>
                 <h4>Note that if this is the first time you use the SoShield&#174 kit, the username and password you enter will be your final username and password.</h4>
-                <form action="" method="post" novalidate class = "forms1">
+                <form class = "xx" action="" method="post" novalidate class = "forms1">
                     {{ form.hidden_tag() }}
                     <p>
                         {{ form.codes.label }}<br>
-                        {{ form.codes(size=32) }}<br>
+                        {{ form.codes(size=32, placeholder="Your activation code...") }}<br>
                         {% for error in form.codes.errors %}
                             <span></span>{{ error }}</span>
                         {% endfor %}
                     </p>
                     <p>
                         {{ form.user_name.label }}<br>
-                        {{ form.user_name(size=32) }}<br>
+                        {{ form.user_name(size=32, placeholder="Your username...") }}<br>
                         {% for error in form.user_name.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </p>
                     <p>
                         {{ form.password.label }}<br>
-                        {{ form.password(size=32) }}<br>
+                        {{ form.password(size=32, placeholder="Your password...") }}<br>
                         {% for error in form.password.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
