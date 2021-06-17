@@ -26,15 +26,15 @@ img{
     margin-top: 3%;
     width: 30%;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    border-radius: 63px;
+    border-radius: 15%;
     margin-bottom: 3%;
 }
 
 .danger img{
     width: 30%;
     filter: hue-rotate(108deg) contrast(1.4) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    border-radius: 63px;
-    margin-bottom: 3%;
+    border-radius: 15%;
+    margin-bottom: 5%;
 }
 
 
@@ -42,17 +42,19 @@ img{
     width: 15%;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     mix-blend-mode: hard-light;
-    border-radius: 57px;
+    border-radius: 15px;
 }
 
 .ads img{
     width: 30%;
-    border: 3px solid #7787da;/*rgba(172, 172, 172, 0.418);*/
+    border: 3% solid #7787da;/*rgba(172, 172, 172, 0.418);*/
     border-radius: 5%;
 }
 
 .progress-bar {
-    width: calc(100% - 6px);
+    position: absolute;
+    bottom: 3%;
+    width: 98%;
     height: 5px;
     background: #e0e0e0;
     padding: 3px;
@@ -72,20 +74,20 @@ img{
     display: block;
     height: 5px;
     background: #659cef;
-    border-radius: 3px;
+    border-radius: 5px;
     transition: width 120s ease-in-out;   
 }
 
-.login{
-    width: 25%
+input[type=password]{
+    width: 60%;
+    padding:1%
 }
-
-
 input[type=text] {
-    padding:5px; 
-    border:2px solid #ccc; 
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+    width: 60%;
+    padding:1%;
+    border:2% solid #ccc; 
+    -webkit-border-radius: 5%;
+    border-radius: 5%;
     font-family: Arial, Helvetica, sans-serif;
     
 }
@@ -95,16 +97,21 @@ input[type=text]:focus {
 }
 
 input[type=submit] {
-    padding:10px 60px; 
+    padding:2% 15%; 
+    margin-bottom: 3%;
     background:white; 
     border:0 none;
     cursor:pointer;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; 
+    -webkit-border-radius: 5%;
+    border-radius: 5%; 
     color: rgb(65, 101, 149);
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 100%;
+}
+
+.login{
+    margin-top:5%;
 }
 
 input[type=submit]:active {
@@ -116,9 +123,12 @@ input[type=submit]:active {
     margin-top: 5%;
 }
 
+.xx{
+    margin-top: 5%;
 
+}
 h1{
-    margin-top: 8%;
+    margin-top: 3%;
 }
 
 .cancel{
