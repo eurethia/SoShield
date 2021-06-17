@@ -98,7 +98,15 @@ def danger():
     return render_template('danger.html', redirect_url = redirect_url)
 
 
-
+def execute():
+    ser = serial.Serial('/dev/cu.usbmodem14101', 9800, timeout=1)
+    while True:
+        a = str(ser.readline())
+        print(a)
+        if "T" in a:
+            ser.close()
+            print("detected!")
+            return
 
 @app.route('/safe/', methods=['GET', 'POST'])
 def safe():
@@ -107,23 +115,15 @@ def safe():
                 
     if request.method == "GET":
         form = Logout()
-        def execute():
-            print("I am detecting!!")
-            ser = serial.Serial('/dev/cu.usbmodem14101', 9800, timeout=1)
-            while True:
-                a = str(ser.readline())
-                print(a)
-                if "T" in a:
-                    ser.close()
-                    print("detected!")
-                    return render_template('danger.html', redirect_url = url_for('safe'))
-        thread = Thread(target = execute)
-        thread.start()
         return render_template("safe.html", form = form)
 
     elif request.method == "POST":
-        session['loggedin'] =  False
-        return redirect(url_for('index'))
+        if request.form['submit_button'] == "Logout":
+            session['loggedin'] =  False
+            return redirect(url_for('index'))
+        elif request.form['submit_button'] == "Start":
+            execute()
+            return redirect(url_for('danger'))
 
 if __name__ == '__main__':
     app.run(debug=True)
