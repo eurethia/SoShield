@@ -117,8 +117,8 @@ def execute():
 @app.route('/safe/', methods=['GET', 'POST'])
 def safe():
     global flag
-    #if session['loggedin'] == False:
-        #return redirect(url_for('index'))
+    if session['loggedin'] == False:
+        return redirect(url_for('index'))
                 
     if request.method == "GET":
         form = Logout()
