@@ -19,7 +19,7 @@ app.config['MYSQL_DB'] = 'freedbtech_SoShield'
 mysql = MySQL(app)
 
 initialize = 0
-
+flag = True
 
 @app.route('/')
 def index():
@@ -39,6 +39,7 @@ def index():
 
 @app.route('/activate/', methods=('GET', 'POST'))
 def activate():
+    #flag = False
     if session['loggedin'] == True:
         return redirect(url_for('safe'))
     form = LoginForm()
@@ -97,33 +98,44 @@ def danger():
         redirect_url = url_for('safe')
     return render_template('danger.html', redirect_url = redirect_url)
 
+@app.route('/stop/')
+def stop():
+    global flag
+    flag = False
+    return redirect(url_for('index'))
 
 def execute():
-    ser = serial.Serial('/dev/cu.usbmodem14101', 9800, timeout=1)
     while True:
-        a = str(ser.readline())
-        print(a)
-        if "T" in a:
-            ser.close()
-            print("detected!")
-            return
+        global flag
+        if flag:
+            print('not detected')
+        else:
+            flag = True
+            break
+    return
 
 @app.route('/safe/', methods=['GET', 'POST'])
 def safe():
-    if session['loggedin'] == False:
-        return redirect(url_for('index'))
+    global flag
+    #if session['loggedin'] == False:
+        #return redirect(url_for('index'))
                 
     if request.method == "GET":
         form = Logout()
         return render_template("safe.html", form = form)
-
+    elif request.form['submit_button'] == "T":
+        flag = False
+        return redirect(url_for('danger'))
     elif request.method == "POST":
         if request.form['submit_button'] == "Logout":
             session['loggedin'] =  False
             return redirect(url_for('index'))
         elif request.form['submit_button'] == "Start":
+            flag = True
             execute()
             return redirect(url_for('danger'))
 
+        
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
