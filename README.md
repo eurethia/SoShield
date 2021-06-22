@@ -32,14 +32,16 @@ git clone https://github.com/eurethia/SoShield.git
  ```
   pip install -r requirements.txt
  ```
-3. Use terminal to run the command
+
+3. Configure the line ```WiFiMulti.addAP("hotspot", "1233211234567");``` in <b>BasicHttpClient</b> to your wifi  name and password. Configure the line ```if (http.begin(client, "http://172.20.10.3:5000/stop/"))``` in <b>BasicHttpClient</b> to your IP address (```https://YOUR IP ADRESS/stop/```). Burn the code into the ESP8266 in the SoShield packet by using Arduino software. 
+
+4. Use terminal to run the command
   ```
   python3 app.py
   ```
-  and you are good to go.
 
-4. At the actication page, enter the activation code found in the SoShield kit. If this is the first time you use our app, you can enter any username and password combinations. But remember, this combination will be your final one and unchangable. We highly recommand you to use your email as username.
+5. At the actication page, enter the activation code found in the SoShield kit. If this is the first time you use our app, you can enter any username and password combinations. But remember, this combination will be your final one and unchangable. We highly recommand you to use your email as username.
 
-5. You will be directed to the safe page. Click "Start" and try to make motions. If the screen changes to danger, congradulations, it works! You will be redirected back to the safe page in 2 minutes.
+6. You will be directed to the safe page. Click "Start" and try to make motions. If the screen changes to danger, congradulations, it works! You will be redirected back to the safe page in 2 minutes.
 
-6. If you want to calibrate the sensitivity of the hardware, open the SoShield kit and use a screwdriver to adjust the microwave sensor. 
+7. If you want to calibrate the sensitivity of the hardware, open the SoShield kit and use a screwdriver to adjust the microwave sensor. 
