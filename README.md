@@ -17,9 +17,9 @@ Visit our website to purchase.
 #### Option 2: Geek, build your own (Not recommanded!!)
 Key material list:
 - [ESP8266\*1 (CH340G)](https://detail.tmall.com/item.htm?spm=a230r.1.14.16.32d967dfbd0Mvz&id=606082163513&ns=1&abbucket=5)
-- [DF robot microwave sensor\*1] (https://www.dfrobot.com.cn/goods-1231.html)
+- [DF robot microwave sensor\*1](https://www.dfrobot.com.cn/goods-1231.html)
 - Arduino wires\*20
-- [Battery board (Optional)]\*1 (https://detail.tmall.com/item.htm?spm=a230r.1.14.23.4a26246bT7gXNZ&id=632138891625&ns=1&abbucket=5)
+- [Battery board (Optional)]\*1](https://detail.tmall.com/item.htm?spm=a230r.1.14.23.4a26246bT7gXNZ&id=632138891625&ns=1&abbucket=5)
 - Arduino Uno\*1
 
 
