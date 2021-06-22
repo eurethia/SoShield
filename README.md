@@ -7,7 +7,7 @@
 - [Instructions](#Instructions)
 
 ### Introduction
-Soshield aims to literally create a shield for people with social anxiety. If you have social anxiety, you really make a good choice buying our product. From today, you will be no longer harmed by any annoying human beings. 
+Soshield aims to literally create a shield for people with social anxiety. If you have social anxiety, you really make a good choice buying our product. From today, you will be no longer harmed by any annoying human beings. The sensor can detect moving humans for you.
 
 ### Requirements
 
@@ -44,4 +44,4 @@ git clone https://github.com/eurethia/SoShield.git
 
 6. You will be directed to the safe page. Click "Start" and try to make motions. If the screen changes to danger, congradulations, it works! You will be redirected back to the safe page in 2 minutes.
 
-7. If you want to calibrate the sensitivity of the hardware, open the SoShield kit and use a screwdriver to adjust the microwave sensor. 
+7. If you want to calibrate the sensitivity of the sensor, open the SoShield kit and use a screwdriver to adjust the microwave sensor. 
